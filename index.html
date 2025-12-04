@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Fast Food Restaurant - Premium Fast Food Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #FFF;
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 1rem;
+        }
+
+        h3 {
+            color: #FFEB3B;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            padding: 6rem 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #FFEB3B;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #FFD700;
+            transition: all 0.3s ease;
+            animation: cardFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            border-color: #FFEB3B;
+        }
+
+        .price {
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        /* Services */
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Contact Form */
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #FFD700;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            background: #000;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #FFEB3B;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 2rem;
+            border-top: 3px solid #FFD700;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #FFD700;
+        }
+
+        /* Rating Stars */
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#food">Food Menu</a></li>
+            <li><a href="#order">Order Now</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>🍔 Royal Fast Food Restaurant 👑</h1>
+        <p class="tagline">Where Quality Meets Speed - Experience Royal Taste!</p>
+        <p>Welcome to the finest fast food experience in town. We serve premium quality burgers, pizzas, fries, and more with the speed you deserve.</p>
+        <a href="#order" class="cta-button">Order Now</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Royal Fast Food Restaurant has been serving delicious, high-quality fast food since 2015. Our mission is to provide our customers with the perfect blend of taste, quality, and speed.</p>
+        <p>We use only the freshest ingredients, prepared by our expert chefs who are passionate about creating memorable dining experiences. From our signature burgers to our crispy fries, every item on our menu is crafted with care and attention to detail.</p>
+        <p>Our commitment to excellence has made us a favorite destination for food lovers who appreciate quality fast food served in a welcoming atmosphere.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="service-icon">🚗</span>
+                <h3>Drive-Thru</h3>
+                <p>Quick and convenient drive-thru service for customers on the go. Get your favorite meals without leaving your car!</p>
+            </div>
+            <div class="card">
+                <span class="service-icon">🏠</span>
+                <h3>Home Delivery</h3>
+                <p>Fast and reliable home delivery service. Enjoy Royal Fast Food in the comfort of your home within 30 minutes.</p>
+            </div>
+            <div class="card">
+                <span class="service-icon">🍽️</span>
+                <h3>Dine-In</h3>
+                <p>Comfortable seating with a modern ambiance. Perfect for families, friends, and business meetings.</p>
+            </div>
+            <div class="card">
+                <span class="service-icon">📱</span>
+                <h3>Online Ordering</h3>
+                <p>Easy online ordering through our website and mobile app. Pre-order and skip the queue!</p>
+            </div>
+            <div class="card">
+                <span class="service-icon">🎉</span>
+                <h3>Catering Services</h3>
+                <p>Special catering packages for parties, events, and corporate gatherings. Make your event memorable!</p>
+            </div>
+            <div class="card">
+                <span class="service-icon">⚡</span>
+                <h3>Express Service</h3>
+                <p>Need it fast? Our express service guarantees your order in under 10 minutes during peak hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Menu Section -->
+    <section id="food">
+        <h2>Our Menu</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🍔 Royal Burger</h3>
+                <p>Our signature double-patty burger with special sauce, lettuce, cheese, and pickles on a toasted sesame bun.</p>
+                <p class="price">$8.99</p>
+            </div>
+            <div class="card">
+                <h3>🍕 Deluxe Pizza</h3>
+                <p>12-inch pizza loaded with premium toppings, mozzarella cheese, and our secret tomato sauce.</p>
+                <p class="price">$12.99</p>
+            </div>
+            <div class="card">
+                <h3>🍟 Golden Fries</h3>
+                <p>Crispy, golden french fries seasoned to perfection. Available in regular and large sizes.</p>
+                <p class="price">$3.99</p>
+            </div>
+            <div class="card">
+                <h3>🌮 Chicken Tacos</h3>
+                <p>Three soft tacos filled with grilled chicken, fresh vegetables, and zesty sauce.</p>
+                <p class="price">$7.99</p>
+            </div>
+            <div class="card">
+                <h3>🍗 Crispy Chicken Wings</h3>
+                <p>8 pieces of juicy chicken wings with your choice of BBQ, Buffalo, or Honey Mustard sauce.</p>
+                <p class="price">$9.99</p>
+            </div>
+            <div class="card">
+                <h3>🥤 Beverages</h3>
+                <p>Wide selection of soft drinks, milkshakes, fresh juices, and specialty coffee drinks.</p>
+                <p class="price">$2.99 - $5.99</p>
+            </div>
+            <div class="card">
+                <h3>🌯 Wrap Combo</h3>
+                <p>Grilled chicken or beef wrap with fresh veggies, served with fries and a drink.</p>
+                <p class="price">$10.99</p>
+            </div>
+            <div class="card">
+                <h3>🍰 Desserts</h3>
+                <p>Indulge in our chocolate brownies, apple pie, or ice cream sundaes.</p>
+                <p class="price">$4.99</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order">
+        <h2>Order Now</h2>
+        <form onsubmit="event.preventDefault(); alert('Thank you for your order! We will contact you shortly to confirm.');">
+            <div class="form-group">
+                <label for="order-name">Full Name *</label>
+                <input type="text" id="order-name" required>
+            </div>
+            <div class="form-group">
+                <label for="order-phone">Phone Number *</label>
+                <input type="tel" id="order-phone" required>
+            </div>
+            <div class="form-group">
+                <label for="order-address">Delivery Address *</label>
+                <textarea id="order-address" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="order-items">Select Items *</label>
+                <select id="order-items" multiple size="5" required>
+                    <option value="burger">Royal Burger - $8.99</option>
+                    <option value="pizza">Deluxe Pizza - $12.99</option>
+                    <option value="fries">Golden Fries - $3.99</option>
+                    <option value="tacos">Chicken Tacos - $7.99</option>
+                    <option value="wings">Crispy Chicken Wings - $9.99</option>
+                    <option value="wrap">Wrap Combo - $10.99</option>
+                    <option value="dessert">Desserts - $4.99</option>
+                </select>
+                <small style="color: #FFEB3B;">Hold Ctrl/Cmd to select multiple items</small>
+            </div>
+            <div class="form-group">
+                <label for="order-notes">Special Instructions</label>
+                <textarea id="order-notes" rows="3" placeholder="Any special requests or dietary requirements?"></textarea>
+            </div>
+            <button type="submit">Place Order</button>
+        </form>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback">
+        <h2>Customer Feedback</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Sarah Johnson</h3>
+                <p>"Best burgers in town! The Royal Burger is absolutely delicious. Fast service and friendly staff!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="card">
+                <h3>Michael Chen</h3>
+                <p>"Amazing pizza and great value for money. The delivery was super quick. Highly recommended!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="card">
+                <h3>Emily Rodriguez</h3>
+                <p>"Love the crispy fries and chicken wings. The quality is consistently excellent. My go-to place!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+        
+        <h2 style="margin-top: 3rem;">Share Your Experience</h2>
+        <form onsubmit="event.preventDefault(); alert('Thank you for your feedback! We appreciate your input.');">
+            <div class="form-group">
+                <label for="feedback-name">Your Name *</label>
+                <input type="text" id="feedback-name" required>
+            </div>
+            <div class="form-group">
+                <label for="feedback-email">Email Address *</label>
+                <input type="email" id="feedback-email" required>
+            </div>
+            <div class="form-group">
+                <label for="feedback-rating">Rating *</label>
+                <select id="feedback-rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                    <option value="4">⭐⭐⭐⭐ Very Good</option>
+                    <option value="3">⭐⭐⭐ Good</option>
+                    <option value="2">⭐⭐ Fair</option>
+                    <option value="1">⭐ Poor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="feedback-message">Your Feedback *</label>
+                <textarea id="feedback-message" rows="5" required placeholder="Tell us about your experience..."></textarea>
+            </div>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <p><strong>📍 Address:</strong> 123 Royal Street, Food District, City Center</p>
+            <p><strong>📞 Phone:</strong> +1 (555) 123-4567</p>
+            <p><strong>📧 Email:</strong> info@royalfastfood.com</p>
+            <p><strong>🕒 Hours:</strong> Monday - Sunday: 10:00 AM - 11:00 PM</p>
+        </div>
+        
+        <form onsubmit="event.preventDefault(); alert('Thank you for contacting us! We will get back to you soon.');">
+            <div class="form-group">
+                <label for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input type="email" id="contact-email" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-subject">Subject *</label>
+                <input type="text" id="contact-subject" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Message *</label>
+                <textarea id="contact-message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Royal Fast Food Restaurant. All Rights Reserved.</p>
+        <p>Follow us on social media: Facebook | Instagram | Twitter</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease-in';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
